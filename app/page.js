@@ -57,13 +57,19 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start p-24 gap-24">
-      <div className="max-w-5xl w-full items-end justify-start font-mono lg:flex gap-4">
+      <div className=" max-w-7xl w-full items-end justify-start font-mono lg:flex gap-4">
         <h1 className="text-8xl tracking-wide ">APOD</h1>
         <p className=" text-lg pb-2">Astronomy Picture of the Day</p>
       </div>
-      <div className="flex max-w-5xl w-full">
+      <div className="flex max-w-7xl w-full">
         <div className="w-1/2">
-          <Image src={url} alt={title} width={500} height={500} />
+          <Image
+            src={url}
+            alt={title}
+            width={500}
+            height={500}
+            className="rounded-2xl"
+          />
         </div>
         <div className="flex flex-col w-1/2">
           <h1 className="text-4xl font-bold tracking-wider">{title}</h1>
