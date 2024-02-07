@@ -18,30 +18,28 @@ const fakeData = {
   url: "https://apod.nasa.gov/apod/image/2308/MoonsJupiter_Coy_960.jpg",
 };
 
-// const fetchPhotoData = async () => {
-//   try {
-//     const res = await fetch(API_URL);
-//     const data = await res.json();
-//     setPhotoData(data);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+async function getData() {
+  const res = await fetch(API_URL);
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
 
-export default function Home() {
-  const [photoData, setPhotoData] = useState(null);
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-  useEffect(() => {
-    // fetchPhotoData();
-    setPhotoData(fakeData);
-  }, []);
+  return res.json();
+}
+
+export default async function Home() {
+  const data = await getData();
 
   // if (!photoData) {
   //   //TODO replace this w/ a Loading component skeleton at some point
   //   return <div>Loading...</div>;
   // }
 
-  const { url, title, explanation, date, copyright } = photoData || fakeData;
+  const { url, title, explanation, date, copyright } = data;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start p-24 gap-24">
