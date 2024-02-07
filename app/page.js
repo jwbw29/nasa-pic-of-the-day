@@ -59,13 +59,17 @@ export default function Home() {
             className="rounded-2xl"
           />
         </div>
-        <div className="flex flex-col w-1/2">
-          <h1 className="text-4xl font-bold tracking-wider">{title}</h1>
-          <div className="flex gap-8 pt-1">
-            <h3 className=" font-extrabold text-lg">{copyright}</h3>
-            <h3 className=" font-light">{date}</h3>
+        <div className="flex flex-col w-1/2 gap-16">
+          <div className="flex flex-col gap-5">
+            <h1 className="text-4xl font-bold tracking-wider">{title}</h1>
+            <div>
+              <h3 className=" font-semibold text-lg">{copyright}</h3>
+            </div>
+            <div>
+              <h3 className=" font-light">{date}</h3>
+            </div>
           </div>
-          <p className="pt-8">{explanation}</p>
+          <p>{explanation}</p>
         </div>
       </div>
     </main>
