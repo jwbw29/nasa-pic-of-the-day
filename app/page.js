@@ -1,6 +1,3 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const API_KEY = "DEMO_KEY";
@@ -34,10 +31,10 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
 
-  // if (!photoData) {
-  //   //TODO replace this w/ a Loading component skeleton at some point
-  //   return <div>Loading...</div>;
-  // }
+  if (!data) {
+    //TODO replace this w/ a Loading component skeleton at some point
+    return <div>Loading...</div>;
+  }
 
   const { url, title, explanation, date, copyright } = data;
 
