@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const API_KEY = "DEMO_KEY";
 const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
@@ -18,33 +15,21 @@ const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 //   url: "https://apod.nasa.gov/apod/image/2308/MoonsJupiter_Coy_960.jpg",
 // };
 
-async function fetchData() {
+async function getData() {
   const res = await fetch(API_URL);
-
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
   if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
-
   return res.json();
 }
-
-export default function Home() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    async function fetchDataAsync() {
-      try {
-        const result = await fetchData();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    }
-
-    fetchDataAsync();
-  }, []);
+export default async function Home() {
+  const data = await getData();
 
   if (!data) {
+    //TODO replace this w/ a Loading component skeleton at some point
     return <div>Loading...</div>;
   }
 
