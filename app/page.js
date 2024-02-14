@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-const API_KEY = "DEMO_KEY";
-const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
+const api_key = process.env.API_KEY || "DEMO_KEY";
+const api_url = `https://api.nasa.gov/planetary/apod?api_key=${api_key}`;
 
 // const fakeData = {
 //   copyright: "\nJordi L. Coy\n",
@@ -16,7 +16,7 @@ const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 // };
 
 async function getData() {
-  const res = await fetch(API_URL);
+  const res = await fetch(api_url);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
   if (!res.ok) {
