@@ -30,7 +30,7 @@ export default async function Home() {
 
   if (!data) {
     //TODO replace this w/ a Loading component skeleton at some point
-    return <div>Loading...</div>;
+    return <div>Loading......</div>;
   }
 
   const { url, title, explanation, date, copyright } = data;
